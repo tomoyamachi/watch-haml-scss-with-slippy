@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+    <!-- Slide meta data, remove/edit as you see fit -->
+    <title>RSpecでテストファーストに挑戦!!</title>
+    <meta content='Tomoya Amachi' name='author'>
+    <meta content='tomoyamachi@gmail.com' name='email'>
+    <meta content='2011-08-06' name='date'>
+    <meta content='hiroshimarb' name='venue'>
+    <!-- Slippy core file and dependencies -->
+    <script src='jquery.min.js' type='text/javascript'></script>
+    <script src='jquery.history.js' type='text/javascript'></script>
+    <script src='slippy.js' type='text/javascript'></script>
+    <!-- Slippy structural styles -->
+    <link href='slippy.css' rel='stylesheet' type='text/css'>
+    <!-- Slippy theme -->
+    <link href='bdd.css' rel='stylesheet' type='text/css'>
+    <!-- Syntax highlighting core file -->
+    <script src='highlighter/shCore.js' type='text/javascript'></script>
+    <!-- Syntax highlighting brushes, remove those you don't need -->
+    <script src='highlighter/shBrushBash.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushCpp.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushCSharp.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushCss.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushDelphi.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushDiff.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushGroovy.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushJava.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushJScript.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushPhp.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushPlain.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushPython.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushRuby.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushScala.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushSql.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushVb.js' type='text/javascript'></script>
+    <script src='highlighter/shBrushXml.js' type='text/javascript'></script>
+    <!-- Syntax highlighting styles -->
+    <link href='highlighter/shCore.css' rel='stylesheet' type='text/css'>
+    <link href='highlighter/shThemeEclipse.css' rel='stylesheet' type='text/css'>
+    <!-- Slippy init code -->
+    <script>
+      //<![CDATA[
+        $(function() {
+            $(".slide").slippy({
+                // settings go here
+                // possible values are:
+                //  - animLen, duration for default animations (0 = disabled)
+                //  - animInForward, receives a slide and animates it
+                //  - animInRewind, receives a slide and animates it
+                //  - animOutForward, receives a slide and animates it
+                //  - animOutRewind, receives a slide and animates it
+                //  - baseWidth, defines the base for img resizing, if you don't want only
+                //    full-width images, specify this as the pixel width of a slide so that
+                //    images are scaled properly (default is 620px wide)
+                //  - ratio, defines the width/height ratio of the slides, defaults to 1.3 (620x476)
+                //  - margin, the fraction of screen to use as slide margin, defaults to 0.15
+            });
+            SyntaxHighlighter.all();
+        });
+      //]]>
+    </script>
+    <style>
+      /*<![CDATA[*/
+        .slide.nofooter {
+            border: 0;
+            background: 0;
+        }
+      /*]]>*/
+    </style>
+  </head>
+  <body>
+    <div class='slide'>
+      <h1>
+        テストファーストに挑戦!!
+        <br>
+        with RSpec
+      </h1>
+      <h3 class='center'>
+        天地 知也
+        <br>
+        08/06/2011
+        <div class='licence'>
+          <a href='http://creativecommons.org/licenses/by-sa/3.0/' rel='license'>
+            <img alt='Creative Commons License' class='leavealone' src='http://i.creativecommons.org/l/by-sa/3.0/88x31.png'>
+          </a>
+        </div>
+        <div class='footer'>
+          <span class='left'>[←]前のスライドヘ [→]次のスライドへ</span>
+          <span class='right'>
+            Built with
+            <a href='https://github.com/Seldaek/slippy'>Slippy</a>.
+          </span>
+        </div>
+      </h3>
+    </div>
+    <div class='slide'>
+      <h1>テストファーストって？</h1>
+      <div class='vcenter'>
+        <h2>プログラム開発手法の一種</h2>
+        <ol>
+          <li>失敗するテストを書く</li>
+          <li>テストがパスする最小限のコードを書く</li>
+          <li>コードをキレイに（リファクタリング）</li>
+        </ol>
+      </div>
+    </div>
+    <div class='slide'>
+      <h2>つまり、</h2>
+      <h1>さきに仕様を決めてから</h1>
+      <h1>開発しようぜ!!</h1>
+      <h2>ってこと</h2>
+    </div>
+    <div class='slide' data-layout='alt'>
+      <h1>TDDとBDDについて</h1>
+      <div class='vcenter'>
+        <h2>TDD...テスト駆動開発(TestDrivenDevelopment)</h2>
+        <br>
+        <h2>BDD...ふるまい駆動開発(BehavierDrivenDevelopment)</h2>
+        <pre class='brush: html'>Foo</pre>
+      </div>
+    </div>
+    <div class='slide'>
+      <h1>何が違うん？</h1>
+      <div class='vcenter'>
+        <h2>ちがいません(たぶん)</h2>
+        <p class='incremental'>テスト駆動開発って名前だと、テストすることが目的になってない？</p>
+        <p class='incremental'>テストが目的じゃなくて、先にどうやって動作をするか決めてから開発しようってことなんだってばー</p>
+        <p class='incremental'>じゃ名前かえようぜ!!</p>
+        <p class='incremental'>「ふるまい」って表現良くね？ってことだとおもう.</p>
+      </div>
+    </div>
+    <div class='slide'>
+      <h2>「テスト対象が存在しないうちにテストを書くのは不自然だけど、なにかを実装する前に振る舞い(仕様)を決めるのは自然だ。」</h2>
+      <div class='vcenter'>
+        <a href='http://ukstudio.jp/2011/07/02/bdd/' rel='license'>http://ukstudio.jp/2011/07/02/bdd/</a>
+      </div>
+    </div>
+    <div class='slide'>
+      <h1>実際TDD(BDD)をためしてみての感想</h1>
+      <div class='vcenter'>
+        <div class='incremental'>
+          <h2>試すまえ</h2>
+          <br>
+          テストコードなんて書かなくても、頭のなかで考えるだけでいいじゃん。
+        </div>
+        <div class='incremental'>
+          <h2>試したあと</h2>
+          <br>
+          どっちにしろ先に仕様きめるなら、コードにして可視化しといたほうがいいじゃん。ていうか「このテストとおればOK」ってしといたほうがらく!!
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
