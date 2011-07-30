@@ -1,0 +1,129 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html;charset=utf-8", "http-equiv" => "Content-Type"}/
+    / Slide meta data, remove/edit as you see fit
+    %title RSpecでテストファーストに挑戦!!
+    %meta{:content => "Tomoya Amachi", :name => "author"}/
+    %meta{:content => "tomoyamachi@gmail.com", :name => "email"}/
+    %meta{:content => "2011-08-06", :name => "date"}/
+    %meta{:content => "hiroshimarb", :name => "venue"}/
+    / Slippy core file and dependencies
+    %script{:src => "../jquery.min.js", :type => "text/javascript"}
+    %script{:src => "../jquery.history.js", :type => "text/javascript"}
+    %script{:src => "../slippy.js", :type => "text/javascript"}
+    / Slippy structural styles
+    %link{:href => "../slippy.css", :rel => "stylesheet", :type => "text/css"}/
+    / Slippy theme
+    %link{:href => "bdd.css", :rel => "stylesheet", :type => "text/css"}/
+    / Syntax highlighting core file
+    %script{:src => "../highlighter/shCore.js", :type => "text/javascript"}
+    / Syntax highlighting brushes, remove those you don't need
+    %script{:src => "../highlighter/shBrushBash.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushCpp.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushCSharp.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushCss.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushDelphi.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushDiff.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushGroovy.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushJava.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushJScript.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushPhp.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushPlain.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushPython.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushRuby.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushScala.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushSql.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushVb.js", :type => "text/javascript"}
+    %script{:src => "../highlighter/shBrushXml.js", :type => "text/javascript"}
+    / Syntax highlighting styles
+    %link{:href => "../highlighter/shCore.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "../highlighter/shThemeEclipse.css", :rel => "stylesheet", :type => "text/css"}/
+    / Slippy init code
+    :javascript
+      $(function() {
+          $(".slide").slippy({
+              // settings go here
+              // possible values are:
+              // - animLen, duration for default animations (0 = disabled)
+              // - animInForward, receives a slide and animates it
+              // - animInRewind, receives a slide and animates it
+              // - animOutForward, receives a slide and animates it
+              // - animOutRewind, receives a slide and animates it
+              // - baseWidth, defines the base for img resizing, if you don't want only
+              // full-width images, specify this as the pixel width of a slide so that
+              // images are scaled properly (default is 620px wide)
+              // - ratio, defines the width/height ratio of the slides, defaults to 1.3 (620x476)
+              // - margin, the fraction of screen to use as slide margin, defaults to 0.15
+          });
+          SyntaxHighlighter.all();
+      });
+    :css
+      .slide.nofooter {
+          border: 0;
+          background: 0;
+      }
+  %body
+    .slide
+      %h1
+        テストファーストに挑戦!!
+        %br
+        with RSpec
+      %h3.center
+        天地 知也
+        %br
+        08/06/2011
+        .licence
+          %a{:href => "http://creativecommons.org/licenses/by-sa/3.0/", :rel => "license"}
+            %img.leavealone{:alt => "Creative Commons License", :src => "http://i.creativecommons.org/l/by-sa/3.0/88x31.png"}/
+        .footer
+          %span.left [←]前のスライドヘ [→]次のスライドへ
+          %span.right
+            Built with
+            = succeed "." do
+              %a{:href => "https://github.com/Seldaek/slippy"} Slippy
+    .slide
+      %h1 テストファーストって？
+      .vcenter
+        %h2 プログラム開発手法の一種
+        %ol
+          %li 失敗するテストを書く
+          %li テストがパスする最小限のコードを書く
+          %li コードをキレイに（リファクタリング）
+    .slide
+      %h2 つまり、
+      %h1 さきに仕様を決めてから
+      %h1 開発しようぜ!!
+      %h2 ってこと
+    .slide{"data-layout" => "alt"}
+      %h1 TDDとBDDについて
+      .vcenter
+        %h2 TDD...テスト駆動開発(TestDrivenDevelopment)
+        %br
+        %h2 BDD...ふるまい駆動開発(BehavierDrivenDevelopment)
+
+        %pre.brush:.html
+          Foo
+    .slide
+      %h1 何が違うん？
+      .vcenter
+        %h2 ちがいません(たぶん)
+        %p.incremental テスト駆動開発って名前だと、テストすることが目的になってない？
+        %p.incremental テストが目的じゃなくて、先にどうやって動作をするか決めてから開発しようってことなんだってばー
+        %p.incremental じゃ名前かえようぜ!!
+        %p.incremental 「ふるまい」って表現良くね？ってことだとおもう.
+    .slide
+      %h2 「テスト対象が存在しないうちにテストを書くのは不自然だけど、なにかを実装する前に振る舞い(仕様)を決めるのは自然だ。」
+      .vcenter
+        %a{:href => "http://ukstudio.jp/2011/07/02/bdd/", :rel => "license"} http://ukstudio.jp/2011/07/02/bdd/
+    .slide
+      %h1 実際TDD(BDD)をためしてみての感想
+      .vcenter
+        .incremental
+          %h2 試すまえ
+          %br
+          テストコードなんて書かなくても、頭のなかで考えるだけでいいじゃん。
+        .incremental
+          %h2 試したあと
+          %br
+          どっちにしろ先に仕様きめるなら、コードにして可視化しといたほうがいいじゃん。ていうか「このテストとおればOK」ってしといたほうがらく.
