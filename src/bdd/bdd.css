@@ -195,3 +195,4 @@ a[rel=src]:before {
     text-shadow: #000 0 0 0;
   }
 }
+.terminal {background:#000000;color:#ffffff;padding: 5px;}

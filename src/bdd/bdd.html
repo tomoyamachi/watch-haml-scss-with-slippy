@@ -83,7 +83,7 @@
         08/06/2011
         <div class='licence'>
           <a href='http://creativecommons.org/licenses/by-sa/3.0/' rel='license'>
-            <img alt='Creative Commons License' class='leavealone' src='http://i.creativecommons.org/l/by-sa/3.0/88x31.png'>
+            <img alt='Creative Commons License' class='leavealone' src='http://i.creativecommons.org/l/by-sa/3.0/88x31.png' width='88'>
           </a>
         </div>
         <div class='footer'>
@@ -98,12 +98,18 @@
     <div class='slide'>
       <h1>テストファーストって？</h1>
       <div class='vcenter'>
-        <h2>プログラム開発手法の一種</h2>
+        <h2>テスト駆動開発(TestDrivenDevelopment)の手順</h2>
+      </div>
+    </div>
+    <div class='slide'>
+      <h2>どうやんの？</h2>
+      <div class='vcenter'>
         <ol>
           <li>失敗するテストを書く</li>
           <li>テストがパスする最小限のコードを書く</li>
           <li>コードをキレイに（リファクタリング）</li>
         </ol>
+        <img height='320' src='TDDcycle.png'>
       </div>
     </div>
     <div class='slide'>
@@ -113,44 +119,58 @@
       <h2>ってこと</h2>
     </div>
     <div class='slide' data-layout='alt'>
-      <h1>TDDとBDDについて</h1>
+      <h1>ちなみにTDDとBDDについて</h1>
       <div class='vcenter'>
         <h2>TDD...テスト駆動開発(TestDrivenDevelopment)</h2>
         <br>
         <h2>BDD...ふるまい駆動開発(BehavierDrivenDevelopment)</h2>
-        <pre class='brush: html'>Foo</pre>
       </div>
     </div>
     <div class='slide'>
-      <h1>何が違うん？</h1>
+      <h1>TDDとBDD,何が違うん？</h1>
       <div class='vcenter'>
-        <h2>ちがいません(たぶん)</h2>
-        <p class='incremental'>テスト駆動開発って名前だと、テストすることが目的になってない？</p>
-        <p class='incremental'>テストが目的じゃなくて、先にどうやって動作をするか決めてから開発しようってことなんだってばー</p>
-        <p class='incremental'>じゃ名前かえようぜ!!</p>
-        <p class='incremental'>「ふるまい」って表現良くね？ってことだとおもう.</p>
+        <h2>ちがいません</h2>
+        <p class='incremental'>テスト駆動開発って名前だと、テストが目的になっちゃうんじゃね？</p>
+        <p class='incremental'>「ふるまい」って表現良い！！ってことだとおもう.</p>
       </div>
     </div>
     <div class='slide'>
-      <h2>「テスト対象が存在しないうちにテストを書くのは不自然だけど、なにかを実装する前に振る舞い(仕様)を決めるのは自然だ。」</h2>
       <div class='vcenter'>
+        <h2>「テスト対象が存在しないうちにテストを書くのは不自然だけど、なにかを実装する前に振る舞い(仕様)を決めるのは自然だ。」</h2>
         <a href='http://ukstudio.jp/2011/07/02/bdd/' rel='license'>http://ukstudio.jp/2011/07/02/bdd/</a>
       </div>
+    </div>
+    <div class='slide'>
+      <h1>とりあえずやってみる</h1>
+      <p class='terminal'>$ gem install rspec</p>
+      <a href='http://d.hatena.ne.jp/t-wada/20100228/p1'>RSpec の入門とその一歩先へ</a>
+    </div>
+    <div class='slide'>
+      <div class='vcenter'>
+        <h1>自動でテストやりたくない?</h1>
+      </div>
+    </div>
+    <div class='slide'>
+      <h1>やりましょう</h1>
+      <p class='terminal'>$ gem install watchr</p>
+      <p>rspec.watchr</p>
+      <pre class="brush: ruby">&#x000A;  def run_withnotify(*files)&#x000A;    puts "Running: #{files.join(' ')}"&#x000A;    puts system("rspec -fs #{files.join(' ')}")&#x000A;  end&#x000A;  watch('(.*)\.rb') { |md| run_withnotify("#{md[1]}_spec.rb") }&#x000A;  watch('(.*)_spec\.rb') { |md| run_withnotify(md[0]) }&#x000A;</pre>
+      <p class='terminal'>$ watchr spec.watchr</p>
+      <h2>これで自動にできるよー</h2>
     </div>
     <div class='slide'>
       <h1>実際TDD(BDD)をためしてみての感想</h1>
       <div class='vcenter'>
         <div class='incremental'>
           <h2>試すまえ</h2>
-          <br>
-          テストコードなんて書かなくても、頭のなかで考えるだけでいいじゃん。
+          <p>テストコードなくても、頭のなかで考えるだけでいいじゃん。</p>
         </div>
         <div class='incremental'>
           <h2>試したあと</h2>
-          <br>
-          どっちにしろ先に仕様きめるなら、コードにして可視化しといたほうがいいじゃん。ていうか「このテストとおればOK」ってしといたほうがらく.
+          <p></p>
         </div>
       </div>
     </div>
+    <div class='slide'></div>
   </body>
 </html>
